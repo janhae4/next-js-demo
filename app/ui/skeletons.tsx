@@ -219,15 +219,17 @@ export function InvoicesTableSkeleton() {
 
 export function FormRowSkeleton() {
   return (
-    <div className="flex flex-row items-center justify-between border-b border-gray-100 py-4">
-      <div className="flex items-center">
-        <div className="mr-2 h-8 w-8 rounded-full bg-gray-200" />
-        <div className="min-w-0">
-          <div className="h-5 w-40 rounded-md bg-gray-200" />
-          <div className="mt-2 h-4 w-12 rounded-md bg-gray-200" />
-        </div>
+    <div
+      className={`${shimmer} bg-gray-50 p-4 md:p-6 rounded-md flex flex-col gap-2`}
+    >
+      <div className="mb-2 block text-sm font-medium">Choose customer</div>
+      <div className="w-full h-8 rounded-md bg-white"></div>
+      <div className="mb-2 block text-sm font-medium">Choose an amount</div>
+      <div className="w-full h-8 rounded-md bg-white"></div>
+      <div className="mb-2 block text-sm font-medium">
+        Set the invoice status
       </div>
-      <div className="mt-2 h-4 w-12 rounded-md bg-gray-200" />
+      <div className="w-full h-10 rounded-md bg-white"></div>
     </div>
   );
 }

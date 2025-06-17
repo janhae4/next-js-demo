@@ -1,23 +1,25 @@
 import Breadcrumbs from "@/app/ui/invoices/breadcrumbs";
 import { Suspense } from "react";
 import { FormRowSkeleton } from "@/app/ui/skeletons";
-import { FormInvoiceWrapper } from "@/app/ui/invoices/form-wrapper";
+import { FormEditWrapper } from "@/app/ui/invoices/form-wrapper";
 
-export default async function Page() {
+export default async function Page(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
+  const id = params.id;
   return (
     <main>
       <Breadcrumbs
         breadcrumbs={[
           { label: "Invoices", href: "/dashboard/invoices" },
           {
-            label: "Create Invoice",
-            href: "/dashboard/invoices/create",
+            label: "Edit Invoice",
+            href: `/dashboard/invoices/${id}/edit`,
             active: true,
           },
         ]}
       />
       <Suspense fallback={<FormRowSkeleton />}>
-        <FormInvoiceWrapper />
+        <FormEditWrapper id={id} />
       </Suspense>
     </main>
   );
